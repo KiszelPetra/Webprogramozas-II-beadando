@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('front.pages.front-example');
 })->name('home');
 
+Route::get('/database', function () {
+    return view('front.pages.database-table');
+})->name('database-table');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
