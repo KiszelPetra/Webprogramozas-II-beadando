@@ -3,8 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::view('/', 'index')->name('home');
+Route::get('/', function () {
+    return view('front.pages.front-example');
+})->name('home');
 
+Route::get('/database', function () {
+    return view('front.pages.database-table');
+})->name('database-table');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('dashboard', function () {
