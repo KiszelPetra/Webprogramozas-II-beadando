@@ -18,8 +18,7 @@ class TanosvenySeeder extends Seeder
         foreach ($npFile as $line) {
             [$id, $nev] = explode("\t", $line);
 
-            DB::connection('tanosveny')
-                ->table('np')
+            DB::table('np')
                 ->insert([
                     'id' => $id,
                     'nev' => $nev
@@ -34,8 +33,7 @@ class TanosvenySeeder extends Seeder
         foreach ($telepulesFile as $line) {
             [$id, $nev, $npid] = explode("\t", $line);
 
-            DB::connection('tanosveny')
-                ->table('telepules')
+            DB::table('telepules')
                 ->insert([
                     'id' => $id,
                     'nev' => $nev,
@@ -52,7 +50,7 @@ class TanosvenySeeder extends Seeder
             [$nev, $hossz, $allomas, $ido, $vezetes, $telepulesid] =
                 explode("\t", $line);
 
-              DB::connection('tanosveny')->table('ut')->insert([
+              DB::table('ut')->insert([
         'nev' => $nev,
         'hossz' => str_replace(',', '.', $hossz),
         'allomas' => $allomas,

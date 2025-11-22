@@ -11,7 +11,7 @@ return new class extends Migration
      */
 public function up(): void
 {
-    Schema::connection('tanosveny')->create('telepules', function (Blueprint $table) {
+    Schema::create('telepules', function (Blueprint $table) {
         $table->id();
         $table->string('nev');
         $table->foreignId('npid')->constrained('np');

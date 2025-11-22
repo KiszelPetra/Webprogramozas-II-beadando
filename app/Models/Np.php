@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Np extends Model
 {
-    protected $connection = 'tanosveny';
     public $table = 'np';
     public $timestamps = false;
 

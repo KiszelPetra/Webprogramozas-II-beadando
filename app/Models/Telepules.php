@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Telepules extends Model
 {
-    protected $connection = 'tanosveny';
     public $table = 'telepules';
     public $timestamps = false;
 

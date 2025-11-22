@@ -8,8 +8,7 @@ class TanosvenyController extends Controller
 {
     public function index()
     {
-        $adatok = DB::connection('tanosveny')
-            ->table('ut')
+        $adatok = DB::table('ut')
             ->join('telepules', 'ut.telepulesid', '=', 'telepules.id')
             ->join('np', 'telepules.npid', '=', 'np.id')
             ->select(
