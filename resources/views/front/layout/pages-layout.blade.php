@@ -23,7 +23,8 @@
 		 
 		<nav id="menu"><ul class="links"><li><a href="/">Főoldal</a></li>
 					<li><a href="{{ route('database-table') }}">Parkok Listája</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="{{ route('kapcsolat') }}">Kapcsolat</a></li>
+					<li><a href="{{ route('uzenet') }}">Üzenetek</a></li>
 
 					        <!-- Ha nincs bejelentkezve -->
         @guest
@@ -32,20 +33,26 @@
         @endguest
 
         <!-- Ha be van jelentkezve -->
-        @auth
-             <li>
-				<a href="/dashboard">Dashboard</a>
-			</li>
+                  @auth
 			 <li>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button style="background:none;border:none;color:white;cursor:pointer;">
-                        Logout
-                    </button>
-                </form>
-            </li>
-        @endauth
+        <a href="/dashboard">Dashboard</a>
+    </li>
+
+    <li>
+        <a href="/admin">Admin menü</a>
+    </li>
+
+    <li>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button style="background:none;border:none;color:white;cursor:pointer;">
+                Logout
+            </button>
+        </form>
+    </li>
+@endauth
 				</ul></nav>
+                
 		
 		<!-- Banner -->
 		 

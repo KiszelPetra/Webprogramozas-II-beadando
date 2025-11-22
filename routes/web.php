@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\TanosvenyController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\MessageController;
 
 
 Route::get('/', function () {
@@ -13,6 +13,22 @@ Route::get('/', function () {
 
 Route::get('/database', [TanosvenyController::class, 'index'])
     ->name('database-table');
+
+Route::get('/kapcsolat', function () {
+    return view('front.pages.contact');
+
+})->name('kapcsolat');
+
+Route::post('/kapcsolat', [\App\Http\Controllers\KapcsolatController::class, 'store']);
+
+
+
+Route::get('/uzenet', [MessageController::class, 'index'])
+    ->name('uzenet');
+
+Route::post('/uzenet', [MessageController::class, 'store'])
+    ->name('uzenet.store');
+
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
