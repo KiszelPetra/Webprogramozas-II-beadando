@@ -4,17 +4,50 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)-->
     <html>
-        <head>
-            <title>@yield(section: 'pageTitle')</title>
-            <meta charset="utf-8">
-            <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="front/css/main.css">
-            @stack('stylesheets')
-        </head>
+        <html>
+	<head>
+		<title>@yield(section: 'pageTitle')</title>
+		<meta charset="utf-8">
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="assets/css/main.css">
+		@stack('stylesheets')
+	</head>
         
         <body class="subpage">
 
+		<!-- Header -->
+			<header id="header"><div class="logo"><a href="/">Hielo <span>by TEMPLATED</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+		<!-- Menu -->
+		 
+		<nav id="menu"><ul class="links"><li><a href="/">Főoldal</a></li>
+					<li><a href="{{ route('database-table') }}">Parkok Listája</a></li>
+					<li><a href="elements.html">Elements</a></li>
+
+					        <!-- Ha nincs bejelentkezve -->
+        @guest
+            <li><a href="{{ route('login') }}">Belépés</a></li>
+            <li><a href="{{ route('register') }}">Regisztráció</a></li>
+        @endguest
+
+        <!-- Ha be van jelentkezve -->
+       @auth
+             <li>
+				<a href="/dashboard">Dashboard</a>
+			</li>
+			 <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button style="background:none;border:none;color:white;cursor:pointer;">
+                        Logout
+                    </button>
+                </form>
+            </li>
+        @endauth
+				</ul></nav>
+                
 		<!-- Header -->
 			<header id="header"><div class="logo"><a href="/">Hielo <span>by TEMPLATED</span></a></div>
 				<a href="#menu">Menu</a>
@@ -23,13 +56,6 @@
 					<li><a href="elements.html">Elements</a></li>
 				</ul>
             </nav>
-            <!-- One <section id="One" class="wrapper style3" ><div class="inner">
-					<header class="align-center">
-                        <p>Tanösvény adatbázis</p>
-						<h2>Adatok</h2>
-					</header>
-                </div>
-            </section>-->
 
                 @yield('content')
             

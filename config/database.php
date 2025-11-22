@@ -42,6 +42,19 @@ return [
             'synchronous' => null,
         ],
 
+        'root' => [
+    'driver' => 'mysql',
+    'host' => env('DB_HOST', '127.0.0.1'),
+    'port' => env('DB_PORT', '3306'),
+    'database' => null,    // <-- NAGYON FONTOS
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', ''),
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+],
+
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
@@ -61,6 +74,21 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+
+         'tanosveny' => [
+    'driver' => 'mysql',
+    'host' => env('TANOSVENY_DB_HOST', '127.0.0.1'),
+    'port' => env('TANOSVENY_DB_PORT', '3306'),
+    'database' => env('TANOSVENY_DB_DATABASE', 'tanosveny'),
+    'username' => env('TANOSVENY_DB_USERNAME', 'root'),
+    'password' => env('TANOSVENY_DB_PASSWORD', ''),
+    'charset' => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix' => '',
+    'strict' => false,
+],
+
+
 
         'mariadb' => [
             'driver' => 'mariadb',

@@ -2,20 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\TanosvenyController;
+use App\Http\Controllers\AdminController;
+
+
 
 Route::get('/', function () {
-    return view('front.pages.front-example');
+    return view('index');
 })->name('home');
 
-Route::get('/database', function () {
-    return view('front.pages.database-table');
-})->name('database-table');
+Route::get('/database', [TanosvenyController::class, 'index'])
+    ->name('database-table');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('dashboard', function () {
 return Inertia::render('dashboard');
 })->name('dashboard');
 });
+
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+});
+
 
 
 Route::view('/generic', 'generic');
